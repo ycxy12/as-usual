@@ -1,0 +1,3 @@
+.choice-row {
+  display: flex;
+}

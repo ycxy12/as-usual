@@ -1,0 +1,38 @@
+<view class="page">
+  <view class="intro"
+    ><text class="eyebrow">我的 · 设置</text><text class="h1">关于日常集</text
+    ><text class="muted"
+      >记录生活、管理物品、发现生活、回顾自己的日常。</text
+    ></view
+  >
+  <view class="section-card card"
+    ><text class="section-title">外观</text
+    ><text class="body"
+      >使用暖白背景、低饱和绿色、系统字体与清晰留白。当前版本保持一套覆盖全应用的统一外观。</text
+    ></view
+  >
+  <view class="section-card card"
+    ><text class="section-title">隐私说明</text
+    ><text class="body"
+      >微信登录凭证仅用于服务端换取 openid。openid
+      用于隔离你的数据，不在页面展示。私有图片需要登录后才能下载。日常集不向其他用户公开你的内容。</text
+    ></view
+  >
+  <view class="section-card card"
+    ><text class="section-title">数据安全</text
+    ><text class="body"
+      >正式部署时请为 MySQL 与图片存储配置备份，并使用 HTTPS 合法域名。AppSecret
+      只保存在服务端环境变量中。</text
+    ></view
+  >
+  <view class="section-card card"
+    ><view class="row"
+      ><text>版本</text><text class="muted">{{version}}</text></view
+    ><view class="row info-row"
+      ><text>客户端</text><text class="muted">微信原生小程序</text></view
+    ><view class="row info-row"
+      ><text>服务端</text><text class="muted">Spring Boot API</text></view
+    ></view
+  >
+  <text class="footer muted">日常集 · 把普通日子好好收起来</text>
+</view>

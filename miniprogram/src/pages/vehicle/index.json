@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "车辆用车记录",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "empty-state": "/components/empty-state/index",
+    "stat-card": "/components/stat-card/index",
+    "expense-insights": "/components/expense-insights/index"
+  }
+}

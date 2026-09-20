@@ -1,0 +1,67 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+  padding: 40rpx 0 26rpx;
+}
+.search,
+.add {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  margin-bottom: 16rpx;
+}
+.search input,
+.add input {
+  flex: 1;
+}
+.list {
+  padding-top: 8rpx;
+  padding-bottom: 8rpx;
+}
+.tag-row {
+  min-height: 108rpx;
+  border-bottom: 1rpx solid var(--rj-line);
+}
+.tag-row:last-child {
+  border: 0;
+}
+.tag-row > view:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+.usage {
+  color: var(--rj-muted);
+  font-size: 23rpx;
+}
+.controls {
+  gap: 28rpx;
+}
+.delete {
+  color: var(--rj-danger);
+  padding: 16rpx 0;
+}
+.editor {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: rgba(20, 24, 21, 0.36);
+  display: flex;
+  align-items: flex-end;
+}
+.editor-card {
+  width: 100%;
+  border-radius: 32rpx 32rpx 0 0;
+  padding-bottom: calc(32rpx + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 28rpx;
+}
+.editor-actions {
+  display: flex;
+  gap: 16rpx;
+}
+.editor-actions view {
+  flex: 1;
+}

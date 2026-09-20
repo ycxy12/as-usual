@@ -1,0 +1,16 @@
+server:
+  port: ${PORT:8080}
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/richangji?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai}
+    username: ${DB_USER:richangji}
+    password: ${DB_PASSWORD:}
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
+app:
+  wechat:
+    app-id: ${WECHAT_APP_ID:}
+    app-secret: ${WECHAT_APP_SECRET:}
+  image-dir: ${IMAGE_DIR:./data/images}

@@ -1,0 +1,5 @@
+<view class="stat">
+  <text class="label">{{label}}</text>
+  <text class="value">{{value}}</text>
+  <text wx:if="{{hint}}" class="hint">{{hint}}</text>
+</view>

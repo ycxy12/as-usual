@@ -1,0 +1,26 @@
+<view class="insights">
+  <text class="heading">费用构成</text>
+  <text wx:if="{{!categoryRows.length}}" class="hint">
+    记录后会显示分类占比
+  </text>
+  <view wx:for="{{categoryRows}}" wx:key="label" class="line">
+    <view class="pair">
+      <text>{{item.label}}</text>
+      <text class="muted">{{item.amountText}} · {{item.percent}}%</text>
+    </view>
+    <progress
+      percent="{{item.percent}}"
+      stroke-width="4"
+      activeColor="#597763"
+      backgroundColor="#eaf0e9"
+      border-radius="4"
+    />
+  </view>
+  <view class="divider"></view>
+  <text class="heading">月度趋势</text>
+  <text wx:if="{{!monthRows.length}}" class="hint">暂无月度数据</text>
+  <view wx:for="{{monthRows}}" wx:key="label" class="pair month">
+    <text>{{item.label}}</text>
+    <text>{{item.amountText}}</text>
+  </view>
+</view>

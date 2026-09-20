@@ -1,0 +1,92 @@
+<view class="page">
+  <view class="intro"
+    ><text class="eyebrow">物品 · {{title}}</text
+    ><text class="h1">{{title}}</text
+    ><text class="muted">{{stats}}　{{extra}}</text></view
+  >
+  <view class="button-primary" bindtap="add"
+    >＋ {{mode==='wardrobe'?'添加衣物':'添加物品'}}</view
+  >
+  <view class="filter card"
+    ><input
+      placeholder="搜索名称、品牌或标签"
+      value="{{q}}"
+      bindinput="search"
+      confirm-type="search"
+      bindconfirm="applySearch"
+    /><text class="link" bindtap="applySearch">搜索</text></view
+  >
+  <view class="filters"
+    ><picker
+      range="{{categories}}"
+      value="{{categoryIndex}}"
+      bindchange="categoryChange"
+      ><view class="filter-pill">{{categories[categoryIndex]}}　⌄</view></picker
+    ><picker
+      range="{{statuses}}"
+      value="{{statusIndex}}"
+      bindchange="statusChange"
+      ><view class="filter-pill">{{statuses[statusIndex]}}　⌄</view></picker
+    ></view
+  >
+  <view wx:if="{{categoryCounts.length}}" class="summary card">
+    <text class="section-title">分类概览</text>
+    <view class="category-grid"
+      ><view wx:for="{{categoryCounts}}" wx:key="name" class="category-count"
+        ><text>{{item.name}}</text
+        ><text class="amount">{{item.count}} 件</text></view
+      ></view
+    >
+    <view wx:if="{{mode==='item'}}" class="row summary-total"
+      ><text class="muted">购入总价</text
+      ><text class="amount">{{purchaseTotal}}</text></view
+    >
+  </view>
+  <view
+    wx:if="{{mode==='wardrobe' && wearRanking.length}}"
+    class="summary card"
+  >
+    <text class="section-title">穿着次数排行</text>
+    <view
+      wx:for="{{wearRanking}}"
+      wx:key="id"
+      class="row rank-row"
+      data-id="{{item.id}}"
+      bindtap="open"
+      ><text>{{index+1}}. {{item.name}}</text
+      ><text class="muted">{{item.wearCount}} 次　›</text></view
+    >
+  </view>
+  <view wx:if="{{error}}" class="error" bindtap="applySearch"
+    >{{error}} · 点击重试</view
+  >
+  <empty-state
+    wx:if="{{!loading && !error && !rows.length}}"
+    title="这里还没有记录"
+    detail="换个条件看看，或先添加一件。"
+    action="添加一件"
+    bind:action="add"
+  />
+  <view
+    wx:for="{{rows}}"
+    wx:key="id"
+    class="entry card"
+    data-id="{{item.id}}"
+    bindtap="open"
+    ><image
+      wx:if="{{item.image}}"
+      src="{{item.image}}"
+      mode="aspectFill"
+      class="thumb"
+    /><view wx:else class="thumb placeholder">{{item.initial}}</view
+    ><view class="entry-body"
+      ><text class="entry-name">{{item.name}}</text
+      ><text class="muted">{{item.category}} · {{item.subtitle}}</text
+      ><text wx:if="{{item.price}}" class="amount">{{item.price}}</text></view
+    ><text class="link">›</text></view
+  >
+  <view wx:if="{{loading}}" class="muted bottom">加载中…</view
+  ><view wx:elif="{{rows.length && rows.length >= total}}" class="muted bottom"
+    >已经到底了</view
+  >
+</view>

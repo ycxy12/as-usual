@@ -1,0 +1,164 @@
+<view class="page">
+  <view class="intro"
+    ><text class="eyebrow"
+      >发现 · {{type==='place'?'周末去哪玩':'今天吃什么'}}</text
+    ><text class="h1">{{title}}</text></view
+  >
+  <view class="field"
+    ><text class="field-label">名称 *</text
+    ><input
+      class="field-input"
+      placeholder="{{type==='place'?'地点名称':'店名'}}"
+      value="{{name}}"
+      data-field="name"
+      bindinput="input"
+  /></view>
+  <view class="field"
+    ><text class="field-label">图片</text
+    ><image
+      wx:if="{{imagePath}}"
+      class="photo"
+      src="{{imagePath}}"
+      mode="aspectFill"
+      bindtap="chooseImage"
+    /><view wx:else class="image-picker" bindtap="chooseImage"
+      >＋ 添加一张图片</view
+    ><text wx:if="{{imagePath}}" class="link" bindtap="removeImage"
+      >移除图片</text
+    ></view
+  >
+  <view class="field"
+    ><text class="field-label">{{type==='place'?'分类':'菜系'}} *</text
+    ><picker
+      range="{{categories}}"
+      value="{{categoryIndex}}"
+      bindchange="categoryChange"
+      ><view class="field-picker">{{category}}　⌄</view></picker
+    ></view
+  >
+  <view class="field"
+    ><text class="field-label">地址</text
+    ><input
+      class="field-input"
+      placeholder="选填"
+      value="{{address}}"
+      data-field="address"
+      bindinput="input"
+  /></view>
+  <view class="field"
+    ><text class="field-label">距离（公里）</text
+    ><input
+      class="field-input"
+      type="digit"
+      placeholder="手工填写，选填"
+      value="{{distanceKm}}"
+      data-field="distanceKm"
+      bindinput="input"
+  /></view>
+  <view class="field"
+    ><text class="field-label"
+      >{{type==='place'?'人均消费':'人均价格'}}（元）</text
+    ><input
+      class="field-input"
+      type="digit"
+      placeholder="选填"
+      value="{{cost}}"
+      data-field="cost"
+      bindinput="input"
+  /></view>
+  <view wx:if="{{type==='restaurant'}}" class="field"
+    ><text class="field-label">评分（0～5）</text
+    ><input
+      class="field-input"
+      type="digit"
+      placeholder="选填，最多一位小数"
+      value="{{rating}}"
+      data-field="rating"
+      bindinput="input"
+  /></view>
+  <view wx:if="{{type==='place'}}" class="field"
+    ><text class="field-label">推荐指数</text
+    ><picker
+      range="{{recommendationLabels}}"
+      value="{{recommendationIndex}}"
+      bindchange="recommendationChange"
+      ><view class="field-picker"
+        >{{recommendationLabels[recommendationIndex]}}　⌄</view
+      ></picker
+    ></view
+  >
+  <view wx:if="{{type==='restaurant'}}" class="field"
+    ><text class="field-label">推荐菜</text
+    ><input
+      class="field-input"
+      placeholder="选填"
+      value="{{recommendedDishes}}"
+      data-field="recommendedDishes"
+      bindinput="input"
+  /></view>
+  <view wx:if="{{type==='restaurant'}}" class="field"
+    ><text class="field-label">避雷菜</text
+    ><input
+      class="field-input"
+      placeholder="选填"
+      value="{{avoidedDishes}}"
+      data-field="avoidedDishes"
+      bindinput="input"
+  /></view>
+  <view wx:if="{{type==='place'}}" class="field"
+    ><text class="field-label">状态</text
+    ><picker
+      range="{{visitStatuses}}"
+      value="{{visitStatusIndex}}"
+      bindchange="statusChange"
+      ><view class="field-picker">{{visitStatus}}　⌄</view></picker
+    ></view
+  >
+  <view class="field"
+    ><text class="field-label">{{type==='place'?'去过次数':'就餐次数'}}</text
+    ><input
+      class="field-input"
+      type="number"
+      value="{{visitCount}}"
+      data-field="visitCount"
+      bindinput="input"
+  /></view>
+  <view class="field"
+    ><text class="field-label">最近{{type==='place'?'到访':'就餐'}}日期</text
+    ><view class="date-row"
+      ><picker
+        mode="date"
+        end="{{today}}"
+        value="{{lastVisitedDate || today}}"
+        bindchange="dateChange"
+        ><view class="field-picker"
+          >{{lastVisitedDate || '选择日期'}}　⌄</view
+        ></picker
+      ><text wx:if="{{lastVisitedDate}}" class="link" bindtap="clearDate"
+        >清空</text
+      ></view
+    ></view
+  >
+  <view class="field"
+    ><text class="field-label">标签</text
+    ><input
+      class="field-input"
+      placeholder="用空格分隔"
+      value="{{tagsText}}"
+      data-field="tagsText"
+      bindinput="input"
+  /></view>
+  <view class="field"
+    ><text class="field-label">备注</text
+    ><textarea
+      class="field-textarea"
+      placeholder="补充一点信息……"
+      value="{{note}}"
+      data-field="note"
+      bindinput="input"
+    />
+  </view>
+  <view class="button-primary form-footer" bindtap="save"
+    >{{saving?'保存中…':'保存'}}</view
+  >
+</view>

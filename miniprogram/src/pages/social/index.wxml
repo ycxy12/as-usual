@@ -1,0 +1,47 @@
+<view class="page">
+  <view class="intro">
+    <text class="eyebrow">人与人之间，值得记得</text>
+    <text class="h1">人情往来</text>
+    <text class="muted">先找到一个人，再看见完整的往来。</text>
+  </view>
+  <view class="search">
+    <text>⌕</text>
+    <input placeholder="搜索联系人" value="{{q}}" bindinput="search" />
+  </view>
+  <view wx:if="{{error}}" class="error" bindtap="refresh">
+    {{error}} · 点击重试
+  </view>
+  <empty-state
+    wx:if="{{!error && !items.length && !loading}}"
+    title="{{q?'没有找到联系人':'从一位重要的人开始'}}"
+    detail="{{q?'试试其他姓名':'记录礼物、礼金与共同经历。'}}"
+    action="{{q?'':'添加联系人'}}"
+    bind:action="add"
+  />
+  <view class="contact-list">
+    <view
+      wx:for="{{items}}"
+      wx:key="id"
+      class="card contact"
+      data-id="{{item.id}}"
+      bindtap="open"
+    >
+      <view class="row">
+        <text class="name">{{item.name}}</text>
+        <text class="muted">{{item.relation}}　›</text>
+      </view>
+      <view class="totals">
+        <text>送出 {{item.sentText}}</text>
+        <text>收到 {{item.receivedText}}</text>
+      </view>
+    </view>
+  </view>
+  <view
+    wx:if="{{items.length !== total}}"
+    class="button-secondary"
+    bindtap="more"
+  >
+    加载更多
+  </view>
+  <view class="fab" bindtap="add">+</view>
+</view>

@@ -1,0 +1,91 @@
+<view class="page">
+  <view class="intro">
+    <text class="eyebrow">用车记录</text>
+    <text class="h1">这次是什么开销？</text>
+  </view>
+  <view class="field">
+    <text class="field-label">类型 *</text>
+    <picker
+      range="{{categories}}"
+      value="{{categoryIndex}}"
+      bindchange="categoryChange"
+    >
+      <view class="field-picker">{{category}}　⌄</view>
+    </picker>
+  </view>
+  <view class="field">
+    <text class="field-label">日期</text>
+    <picker mode="date" value="{{date}}" bindchange="dateChange">
+      <view class="field-picker">{{date}}　⌄</view>
+    </picker>
+  </view>
+  <view class="field">
+    <text class="field-label">金额（元）*</text>
+    <input
+      class="field-input"
+      type="digit"
+      placeholder="0.00"
+      value="{{amount}}"
+      data-field="amount"
+      bindinput="input"
+    />
+  </view>
+  <view class="field">
+    <text class="field-label">当前里程（公里）</text>
+    <input
+      class="field-input"
+      type="digit"
+      placeholder="选填，有助于计算每公里成本"
+      value="{{odometer}}"
+      data-field="odometer"
+      bindinput="input"
+    />
+  </view>
+  <view wx:if="{{showEnergy}}" class="field">
+    <text class="field-label">
+      {{category==='加油'?'油量（升）':'电量（度）'}}
+    </text>
+    <input
+      class="field-input"
+      type="digit"
+      placeholder="选填"
+      value="{{quantity}}"
+      data-field="quantity"
+      bindinput="input"
+    />
+  </view>
+  <view wx:if="{{showEnergy}}" class="field">
+    <text class="field-label">单价（元）</text>
+    <input
+      class="field-input"
+      type="digit"
+      placeholder="选填"
+      value="{{unitPrice}}"
+      data-field="unitPrice"
+      bindinput="input"
+    />
+  </view>
+  <view wx:if="{{showLocation}}" class="field">
+    <text class="field-label">地点 / 商家</text>
+    <input
+      class="field-input"
+      placeholder="选填"
+      value="{{location}}"
+      data-field="location"
+      bindinput="input"
+    />
+  </view>
+  <view class="field">
+    <text class="field-label">备注</text>
+    <textarea
+      class="field-textarea"
+      placeholder="补充一些细节……"
+      value="{{note}}"
+      data-field="note"
+      bindinput="input"
+    />
+  </view>
+  <view class="button-primary form-footer" bindtap="save">
+    {{saving?'保存中…':'保存记录'}}
+  </view>
+</view>

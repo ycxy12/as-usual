@@ -1,0 +1,26 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+  padding: 40rpx 0 26rpx;
+}
+.section-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin: 20rpx 0;
+}
+.body {
+  line-height: 1.75;
+}
+.info-row {
+  padding-top: 20rpx;
+  margin-top: 20rpx;
+  border-top: 1rpx solid var(--rj-line);
+}
+.footer {
+  display: block;
+  text-align: center;
+  padding: 48rpx 0 20rpx;
+  font-size: 24rpx;
+}

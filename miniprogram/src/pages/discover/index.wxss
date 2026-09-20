@@ -1,0 +1,34 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+  padding: 40rpx 0 24rpx;
+}
+.feature {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin: 20rpx 0;
+}
+.feature-title {
+  font-size: 38rpx;
+  font-weight: 600;
+}
+.feature .link {
+  text-align: center;
+}
+.recent {
+  margin-top: 20rpx;
+}
+.recent-row {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid var(--rj-line);
+}
+.recent-row:last-child {
+  border: 0;
+}
+.recent-main {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}

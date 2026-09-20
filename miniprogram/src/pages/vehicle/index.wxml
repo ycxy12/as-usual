@@ -1,0 +1,63 @@
+<view class="page">
+  <view class="intro">
+    <text class="eyebrow">每一程，都有迹可循</text>
+    <text class="h1">用车账本</text>
+  </view>
+  <view wx:if="{{error}}" class="error" bindtap="refresh">
+    {{error}} · 点击重试
+  </view>
+  <view class="stat-grid">
+    <stat-card label="本月费用" value="{{month}}" />
+    <stat-card label="本年费用" value="{{year}}" />
+    <stat-card label="累计费用" value="{{cumulative}}" />
+    <stat-card label="月均费用" value="{{average}}" />
+    <stat-card label="每公里成本" value="{{perKm}}" hint="{{distance}}" />
+  </view>
+  <expense-insights
+    wx:if="{{stats}}"
+    categories="{{stats.expenses.categories}}"
+    months="{{stats.expenses.months}}"
+    total="{{stats.expenses.total}}"
+  />
+  <view class="card mileage">
+    <text class="h2">里程趋势</text>
+    <text wx:if="{{!mileage.length}}" class="muted mileage-empty">
+      添加当前里程后，在这里回顾行驶轨迹。
+    </text>
+    <view wx:for="{{mileage}}" wx:key="date" class="row list-item">
+      <text class="muted">{{item.date}}</text>
+      <text>{{item.value}}</text>
+    </view>
+  </view>
+  <view class="section">
+    <text class="section-title">近期记录</text>
+    <empty-state
+      wx:if="{{!error && !items.length && !loading}}"
+      title="还没有用车记录"
+      detail="加油、停车或洗车，都可以从这里记起。"
+      action="新增记录"
+      bind:action="add"
+    />
+    <view wx:for="{{items}}" wx:key="id" class="row list-item">
+      <view class="entry" data-id="{{item.id}}" bindtap="edit">
+        <text>
+          {{item.category}}　
+          <text class="muted">{{item.dateText}}</text>
+        </text>
+        <text wx:if="{{item.note}}" class="muted note">{{item.note}}</text>
+      </view>
+      <text class="amount">{{item.amountText}}</text>
+      <text class="button-danger" data-id="{{item.id}}" catchtap="remove">
+        删除
+      </text>
+    </view>
+    <view
+      wx:if="{{items.length !== total}}"
+      class="button-secondary"
+      bindtap="more"
+    >
+      加载更多
+    </view>
+  </view>
+  <view class="fab" bindtap="add">+</view>
+</view>

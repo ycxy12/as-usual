@@ -1,0 +1,38 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+  padding: 40rpx 0 26rpx;
+}
+.module {
+  margin: 20rpx 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+.numbers {
+  display: flex;
+  justify-content: space-between;
+  color: var(--rj-accent);
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.quick-row {
+  display: flex;
+  gap: 16rpx;
+  margin: 28rpx 0;
+}
+.quick-row view {
+  flex: 1;
+  text-align: center;
+}
+.recent {
+  margin-top: 20rpx;
+}
+.recent-row {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid var(--rj-line);
+}
+.recent-row:last-child {
+  border: 0;
+}

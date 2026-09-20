@@ -1,0 +1,5 @@
+{
+  "navigationBarTitleText": "人情往来",
+  "enablePullDownRefresh": true,
+  "usingComponents": { "empty-state": "/components/empty-state/index" }
+}

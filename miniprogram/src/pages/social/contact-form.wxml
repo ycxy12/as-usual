@@ -1,0 +1,42 @@
+<view class="page">
+  <view class="intro">
+    <text class="eyebrow">记住一个人</text>
+    <text class="h1">这个人是谁？</text>
+  </view>
+  <view class="field">
+    <text class="field-label">姓名 *</text>
+    <input
+      class="field-input"
+      maxlength="80"
+      placeholder="例如：小林"
+      value="{{name}}"
+      data-field="name"
+      bindinput="input"
+    />
+  </view>
+  <view class="field">
+    <text class="field-label">关系</text>
+    <input
+      class="field-input"
+      maxlength="80"
+      placeholder="例如：朋友、同事、亲戚"
+      value="{{relation}}"
+      data-field="relation"
+      bindinput="input"
+    />
+  </view>
+  <view class="field">
+    <text class="field-label">备注</text>
+    <textarea
+      class="field-textarea"
+      maxlength="1000"
+      placeholder="有关这个人的补充信息……"
+      value="{{note}}"
+      data-field="note"
+      bindinput="input"
+    />
+  </view>
+  <view class="button-primary form-footer" bindtap="save">
+    {{saving?'保存中…':'保存联系人'}}
+  </view>
+</view>

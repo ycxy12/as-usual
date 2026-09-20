@@ -1,0 +1,45 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+  padding: 40rpx 0 30rpx;
+}
+.section-first {
+  margin-top: 20rpx;
+}
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-top: 20rpx;
+}
+.stat {
+  width: calc(50% - 8rpx);
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+.value {
+  font-size: 38rpx;
+  font-weight: 650;
+  color: var(--rj-accent);
+}
+.menu {
+  margin-top: 20rpx;
+}
+.menu-row {
+  min-height: 120rpx;
+  border-bottom: 1rpx solid var(--rj-line);
+}
+.menu-row:last-child {
+  border: 0;
+}
+.menu-row > view {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+.menu-detail {
+  color: var(--rj-muted);
+  font-size: 24rpx;
+}

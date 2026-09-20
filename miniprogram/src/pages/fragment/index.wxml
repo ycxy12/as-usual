@@ -1,0 +1,84 @@
+<view class="page">
+  <view class="intro">
+    <text class="eyebrow">随手记下，日后可见</text>
+    <text class="h1">生活片段</text>
+    <text class="muted">{{total}} 条记录，慢慢拼成你的日常。</text>
+  </view>
+  <view class="search">
+    <text>⌕</text>
+    <input
+      placeholder="搜索内容或标签"
+      value="{{query}}"
+      bindinput="onSearch"
+    />
+  </view>
+  <view class="filters">
+    <picker mode="date" value="{{date}}" bindchange="onDate">
+      <view class="chip {{date?'chip-active':''}}">
+        {{date || '全部日期'}} ⌄
+      </view>
+    </picker>
+    <view wx:if="{{date}}" class="chip" bindtap="clearDate">清除日期 ×</view>
+  </view>
+  <scroll-view scroll-x class="tag-scroll">
+    <view class="tag-line">
+      <view
+        wx:for="{{tags}}"
+        wx:key="*this"
+        class="chip {{tag===item?'chip-active':''}}"
+        data-tag="{{item}}"
+        bindtap="onTag"
+      >
+        # {{item}}
+      </view>
+    </view>
+  </scroll-view>
+  <view wx:if="{{error}}" class="error" bindtap="refresh">
+    {{error}} · 点击重试
+  </view>
+  <empty-state
+    wx:if="{{!error && !items.length && !loading}}"
+    title="{{query || tag || date ? '没有找到匹配的碎片' : '今天，从一小段话开始'}}"
+    detail="{{query || tag || date ? '试试清除筛选条件。' : '随手记下此刻的事情或想法。'}}"
+    action="{{query || tag || date ? '' : '写一条碎片'}}"
+    bind:action="add"
+  />
+  <view class="timeline">
+    <view
+      wx:for="{{items}}"
+      wx:key="id"
+      class="timeline-item"
+      data-id="{{item.id}}"
+      bindtap="open"
+    >
+      <view class="when">
+        <text>{{item.dateText}}</text>
+        <text>{{item.timeText}}</text>
+      </view>
+      <view class="card fragment-card">
+        <text class="body">{{item.preview}}</text>
+        <view class="meta">
+          <text
+            wx:for="{{item.tags}}"
+            wx:for-item="tagName"
+            wx:key="*this"
+            class="tag"
+          >
+            #{{tagName}}
+          </text>
+          <text wx:if="{{item.imageIds.length}}" class="muted">
+            ▧ {{item.imageIds.length}} 张图片
+          </text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view
+    wx:if="{{items.length !== total}}"
+    class="button-secondary more"
+    bindtap="more"
+  >
+    加载更多
+  </view>
+  <view class="fab" bindtap="add">+</view>
+</view>

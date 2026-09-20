@@ -1,0 +1,27 @@
+.mileage {
+  margin-top: 32rpx;
+}
+.mileage-empty {
+  display: block;
+  padding: 40rpx 0;
+  font-size: 25rpx;
+}
+.entry {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+.note {
+  font-size: 24rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.list-item .amount {
+  font-size: 25rpx;
+}
+.list-item .button-danger {
+  font-size: 24rpx;
+}

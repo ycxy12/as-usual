@@ -1,0 +1,53 @@
+<view class="page">
+  <view class="intro"
+    ><text class="eyebrow">我的 · 数据管理</text
+    ><text class="h1">你的数据，只属于当前微信身份。</text
+    ><text class="muted"
+      >业务数据保存在自建服务端
+      MySQL，图片保存在服务端私有目录；小程序本地只缓存有期限的登录会话。</text
+    ></view
+  >
+  <view wx:if="{{error}}" class="error" bindtap="load"
+    >{{error}} · 点击重试</view
+  >
+  <view class="card"
+    ><text class="section-title">数据统计</text
+    ><view wx:for="{{rows}}" wx:key="label" class="row data-row"
+      ><text class="muted">{{item.label}}</text
+      ><text>{{item.value}}</text></view
+    ></view
+  >
+  <view class="section card notice"
+    ><text class="section-title">存储与备份</text
+    ><text
+      >卸载小程序不会删除服务端数据。正式部署需要同时备份 MySQL
+      数据库和图片卷。目前尚未提供导入、导出和自动备份。</text
+    ></view
+  >
+  <view class="danger-zone"
+    ><text class="section-title">危险操作</text
+    ><text class="muted"
+      >清空会删除当前用户的全部记录、物品、发现数据、分类、标签和图片。</text
+    ><view class="danger-button" bindtap="beginClear"
+      >清空全部个人数据</view
+    ></view
+  >
+  <view wx:if="{{confirming}}" class="confirm-layer"
+    ><view class="confirm-card card"
+      ><text class="section-title">最后确认</text
+      ><text class="muted">请输入“清空”后继续。这个操作无法撤销。</text
+      ><input
+        class="field-input"
+        placeholder="输入：清空"
+        value="{{phrase}}"
+        bindinput="input"
+        focus
+      /><view class="confirm-actions"
+        ><view class="button-secondary" bindtap="cancel">取消</view
+        ><view class="clear-button" bindtap="clear"
+          >{{clearing?'清空中…':'永久清空'}}</view
+        ></view
+      ></view
+    ></view
+  >
+</view>

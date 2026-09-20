@@ -1,0 +1,63 @@
+{
+  "pages": [
+    "pages/record/index",
+    "pages/fragment/index",
+    "pages/fragment/form",
+    "pages/fragment/detail",
+    "pages/vehicle/index",
+    "pages/vehicle/form",
+    "pages/housing/index",
+    "pages/housing/form",
+    "pages/social/index",
+    "pages/social/contact",
+    "pages/social/contact-form",
+    "pages/social/gift-form",
+    "pages/items/index",
+    "pages/items/list",
+    "pages/items/detail",
+    "pages/items/form",
+    "pages/discover/index",
+    "pages/discover/list",
+    "pages/discover/detail",
+    "pages/discover/form",
+    "pages/discover/pick",
+    "pages/profile/index",
+    "pages/profile/categories",
+    "pages/profile/tags",
+    "pages/profile/data",
+    "pages/profile/settings"
+  ],
+  "window": {
+    "backgroundColor": "#f8f7f3",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f8f7f3",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "日常集"
+  },
+  "tabBar": {
+    "color": "#858981",
+    "selectedColor": "#597763",
+    "backgroundColor": "#fffefa",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/record/index",
+        "text": "记录"
+      },
+      {
+        "pagePath": "pages/items/index",
+        "text": "物品"
+      },
+      {
+        "pagePath": "pages/discover/index",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

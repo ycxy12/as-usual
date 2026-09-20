@@ -1,0 +1,77 @@
+<view class="page">
+  <view class="intro"
+    ><text class="eyebrow">发现 · 帮我选</text><text class="h1">{{title}}</text
+    ><text class="muted">设几个条件，也可以全部留空。</text></view
+  >
+  <view class="filters-card card">
+    <view class="field"
+      ><text class="field-label">{{type==='place'?'类型':'菜系'}}</text
+      ><picker
+        range="{{categories}}"
+        value="{{categoryIndex}}"
+        bindchange="categoryChange"
+        ><view class="field-picker"
+          >{{categories[categoryIndex]}}　⌄</view
+        ></picker
+      ></view
+    >
+    <view class="field"
+      ><text class="field-label">最高预算（人均）</text
+      ><input
+        class="field-input"
+        type="digit"
+        placeholder="不限"
+        value="{{budget}}"
+        data-field="budget"
+        bindinput="input"
+    /></view>
+    <view class="field"
+      ><text class="field-label">最远距离（公里）</text
+      ><input
+        class="field-input"
+        type="digit"
+        placeholder="不限"
+        value="{{distance}}"
+        data-field="distance"
+        bindinput="input"
+    /></view>
+    <view class="field"
+      ><text class="field-label">是否去过</text
+      ><picker
+        range="{{visitLabels}}"
+        value="{{visitIndex}}"
+        bindchange="visitChange"
+        ><view class="field-picker"
+          >{{visitLabels[visitIndex]}}　⌄</view
+        ></picker
+      ></view
+    >
+    <view wx:if="{{type==='restaurant'}}" class="row switch-row"
+      ><text>排除最近 7 天吃过的</text
+      ><switch
+        color="#597763"
+        checked="{{excludeRecent7}}"
+        bindchange="recentChange"
+    /></view>
+  </view>
+  <view class="button-primary choose" bindtap="choose"
+    >{{loading?'挑选中…':resultId?'换一个':'帮我选'}}</view
+  >
+  <view wx:if="{{error}}" class="empty-result"
+    ><text class="h2">暂时没有合适的候选</text
+    ><text class="muted">{{error}}</text></view
+  >
+  <view wx:if="{{resultId}}" class="result card"
+    ><image
+      wx:if="{{resultImage}}"
+      src="{{resultImage}}"
+      mode="aspectFill"
+      class="result-image"
+    /><text class="eyebrow">{{resultCategory}}</text
+    ><text class="result-name">{{resultName}}</text
+    ><text wx:if="{{resultMeta}}" class="muted">{{resultMeta}}</text
+    ><view class="button-primary" bindtap="confirm"
+      >{{confirming?'记录中…':confirmed?'已记下这次到访':type==='place'?'这个周末去':'今天就吃它'}}</view
+    ><text class="link" bindtap="detail">查看详情　›</text></view
+  >
+</view>

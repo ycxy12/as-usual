@@ -1,0 +1,97 @@
+<view class="page">
+  <view class="intro">
+    <text class="eyebrow">与 {{contactName}} 的往来</text>
+    <text class="h1">记住这份心意</text>
+  </view>
+  <view class="field">
+    <text class="field-label">日期</text>
+    <picker mode="date" value="{{date}}" bindchange="dateChange">
+      <view class="field-picker">{{date}}　⌄</view>
+    </picker>
+  </view>
+  <view class="field">
+    <text class="field-label">事件 *</text>
+    <input
+      class="field-input"
+      maxlength="120"
+      placeholder="例如：生日、婚礼、探望"
+      value="{{event}}"
+      data-field="event"
+      bindinput="input"
+    />
+  </view>
+  <view class="field">
+    <text class="field-label">方向</text>
+    <view class="choice-row">
+      <view
+        class="chip {{direction==='送出'?'chip-active':''}}"
+        data-value="送出"
+        bindtap="directionChange"
+      >
+        送出
+      </view>
+      <view
+        class="chip {{direction==='收到'?'chip-active':''}}"
+        data-value="收到"
+        bindtap="directionChange"
+      >
+        收到
+      </view>
+    </view>
+  </view>
+  <view class="field">
+    <text class="field-label">形式</text>
+    <view class="choice-row">
+      <view
+        class="chip {{kind==='现金'?'chip-active':''}}"
+        data-value="现金"
+        bindtap="kindChange"
+      >
+        现金
+      </view>
+      <view
+        class="chip {{kind==='礼物'?'chip-active':''}}"
+        data-value="礼物"
+        bindtap="kindChange"
+      >
+        礼物
+      </view>
+    </view>
+  </view>
+  <view class="field">
+    <text class="field-label">金额（元）*</text>
+    <input
+      class="field-input"
+      type="digit"
+      placeholder="0.00；礼物可填估值"
+      value="{{amount}}"
+      data-field="amount"
+      bindinput="input"
+    />
+  </view>
+  <view wx:if="{{kind==='礼物'}}" class="field">
+    <text class="field-label">礼物名称 *</text>
+    <input
+      class="field-input"
+      maxlength="120"
+      placeholder="例如：一束花"
+      value="{{giftName}}"
+      data-field="giftName"
+      bindinput="input"
+    />
+  </view>
+  <view class="field">
+    <text class="field-label">备注</text>
+    <textarea
+      class="field-textarea"
+      maxlength="1000"
+      placeholder="想记住的细节……"
+      value="{{note}}"
+      data-field="note"
+      bindinput="input"
+    />
+  </view>
+  <view class="button-primary form-footer" bindtap="save">
+    {{saving?'保存中…':'保存往来'}}
+  </view>
+</view>

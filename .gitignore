@@ -1,0 +1,10 @@
+**/target/
+**/node_modules/
+**/dist/
+backend/data/
+.DS_Store
+.idea/
+.vscode/
+*.log
+.env
+**/project.private.config.json

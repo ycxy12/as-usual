@@ -1,0 +1,66 @@
+<view class="page">
+  <view class="intro"
+    ><text class="eyebrow">我的 · 标签管理</text
+    ><text class="h1">让常用标签更清楚。</text
+    ><text class="muted"
+      >这里汇总碎片、物品、衣柜、餐厅和地点的标签。</text
+    ></view
+  >
+  <view class="search card"
+    ><input
+      placeholder="搜索标签"
+      value="{{q}}"
+      data-field="q"
+      bindinput="input"
+      confirm-type="search"
+      bindconfirm="search"
+    /><text class="link" bindtap="search">搜索</text></view
+  >
+  <view class="add card"
+    ><input
+      placeholder="新标签名称"
+      value="{{newName}}"
+      data-field="newName"
+      bindinput="input"
+      confirm-type="done"
+      bindconfirm="add"
+    /><text class="link" bindtap="add">添加</text></view
+  >
+  <view wx:if="{{error}}" class="error" bindtap="load"
+    >{{error}} · 点击重试</view
+  >
+  <empty-state
+    wx:if="{{!loading && !error && !tags.length}}"
+    title="没有找到标签"
+    detail="新增一个，或换个关键词。"
+  />
+  <view class="card list"
+    ><view wx:for="{{tags}}" wx:key="name" class="row tag-row"
+      ><view
+        ><text>#{{item.name}}</text
+        ><text class="usage">{{item.usageCount}} 条数据使用</text></view
+      ><view class="row controls"
+        ><text class="link" data-name="{{item.name}}" bindtap="startEdit"
+          >改名</text
+        ><text class="delete" data-name="{{item.name}}" bindtap="remove"
+          >删除</text
+        ></view
+      ></view
+    ></view
+  >
+  <view wx:if="{{editingOld}}" class="editor"
+    ><view class="editor-card card"
+      ><text class="section-title">修改标签</text
+      ><input
+        class="field-input"
+        value="{{editingName}}"
+        data-field="editingName"
+        bindinput="input"
+        focus
+      /><view class="editor-actions"
+        ><view class="button-secondary" bindtap="cancelEdit">取消</view
+        ><view class="button-primary" bindtap="saveEdit">保存</view></view
+      ></view
+    ></view
+  >
+</view>

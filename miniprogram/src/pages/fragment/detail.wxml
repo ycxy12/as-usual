@@ -1,0 +1,29 @@
+<view class="page">
+  <view wx:if="{{item}}" class="detail">
+    <text class="eyebrow">{{dateText}}　{{timeText}}</text>
+    <text class="content">{{item.content}}</text>
+    <view wx:if="{{imagePaths.length}}" class="images">
+      <image
+        wx:for="{{imagePaths}}"
+        wx:key="*this"
+        src="{{item}}"
+        mode="aspectFill"
+        data-path="{{item}}"
+        bindtap="preview"
+      />
+    </view>
+    <view>
+      <text wx:for="{{item.tags}}" wx:key="*this" class="chip chip-active">
+        # {{item}}
+      </text>
+    </view>
+    <view class="button-secondary" bindtap="edit">编辑碎片</view>
+    <view class="button-danger" bindtap="remove">删除这条碎片</view>
+  </view>
+  <empty-state
+    wx:else
+    title="{{error || '碎片不存在'}}"
+    action="返回"
+    bind:action="back"
+  />
+</view>

@@ -1,0 +1,60 @@
+<view class="page">
+  <view class="intro"
+    ><text class="eyebrow">日常集 · 我的</text
+    ><text class="h1">这些日子，慢慢有了形状。</text
+    ><text class="muted">只看几件和当下有关的事。</text></view
+  >
+  <view wx:if="{{error}}" class="error" bindtap="load"
+    >{{error}} · 点击重试</view
+  >
+  <view class="section-first"
+    ><text class="section-title">本月一览</text
+    ><view class="stats"
+      ><view class="stat card"
+        ><text class="muted">本月记录</text
+        ><text class="value">{{monthRecords}}</text></view
+      ><view class="stat card"
+        ><text class="muted">车辆成本</text
+        ><text class="value amount">{{vehicle}}</text></view
+      ><view class="stat card"
+        ><text class="muted">居住成本</text
+        ><text class="value amount">{{housing}}</text></view
+      ><view class="stat card"
+        ><text class="muted">拥有物品</text
+        ><text class="value">{{items}}</text></view
+      ><view class="stat card"
+        ><text class="muted">衣柜</text
+        ><text class="value">{{garments}}</text></view
+      ><view class="stat card"
+        ><text class="muted">去过餐厅 / 地点</text
+        ><text class="value">{{restaurants}} / {{places}}</text></view
+      ></view
+    ></view
+  >
+  <view class="section"
+    ><text class="section-title">整理日常集</text
+    ><view class="menu card"
+      ><view class="row menu-row" data-page="categories" bindtap="open"
+        ><view
+          ><text>分类管理</text
+          ><text class="menu-detail">统一整理六类业务分类</text></view
+        ><text class="link">›</text></view
+      ><view class="row menu-row" data-page="tags" bindtap="open"
+        ><view
+          ><text>标签管理</text
+          ><text class="menu-detail">查找、改名和清理标签</text></view
+        ><text class="link">›</text></view
+      ><view class="row menu-row" data-page="data" bindtap="open"
+        ><view
+          ><text>数据管理</text
+          ><text class="menu-detail">查看数量与存储说明</text></view
+        ><text class="link">›</text></view
+      ><view class="row menu-row" data-page="settings" bindtap="open"
+        ><view
+          ><text>设置与关于</text
+          ><text class="menu-detail">外观、隐私与版本信息</text></view
+        ><text class="link">›</text></view
+      ></view
+    ></view
+  >
+</view>

@@ -1,0 +1,100 @@
+<view class="page">
+  <view class="hero">
+    <text class="eyebrow">{{today}} · 日常集</text>
+    <text class="h1">今天发生了什么？</text>
+    <text class="muted">小事值得被记住。</text>
+    <view class="button-primary quick" bindtap="quickAdd">
+      ＋　快速记录一条碎片
+    </view>
+  </view>
+  <view wx:if="{{error}}" class="error" bindtap="load">
+    {{error}} · 点击重试
+  </view>
+  <view class="section">
+    <view class="row">
+      <text class="section-title">今日碎片</text>
+      <text class="link" bindtap="fragments">全部碎片　›</text>
+    </view>
+    <view class="card">
+      <empty-state
+        wx:if="{{!error && !todayFragments.length}}"
+        title="今天还没有碎片"
+        detail="想到什么，就先记下来。"
+        action="随手记下"
+        bind:action="quickAdd"
+      />
+      <view
+        wx:for="{{todayFragments}}"
+        wx:key="id"
+        class="today-item"
+        data-id="{{item.id}}"
+        bindtap="openFragment"
+      >
+        <text class="time">{{item.time}}</text>
+        <text class="content">{{item.content}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="row">
+      <text class="section-title">近期记录</text>
+      <text class="link" bindtap="fragments">查看时间线　›</text>
+    </view>
+    <view class="card">
+      <empty-state
+        wx:if="{{!error && !recent.length}}"
+        title="记录会在这里慢慢积累"
+      />
+      <view
+        wx:for="{{recent}}"
+        wx:key="id"
+        class="row list-item"
+        data-id="{{item.id}}"
+        data-path="{{item.path}}"
+        bindtap="openRecent"
+      >
+        <text class="muted">{{item.title}}</text>
+        <text class="recent-detail">{{item.detail}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <text class="section-title">这个月的生活成本</text>
+    <view class="cost-grid">
+      <view class="cost card" bindtap="vehicles">
+        <text class="muted">车辆用车</text>
+        <text class="cost-value amount">{{vehicleMonth}}</text>
+        <text class="link">查看记录　›</text>
+      </view>
+      <view class="cost card" bindtap="housing">
+        <text class="muted">居住成本</text>
+        <text class="cost-value amount">{{housingMonth}}</text>
+        <text class="link">查看记录　›</text>
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="row">
+      <text class="section-title">最近人情往来</text>
+      <text class="link" bindtap="social">查看全部　›</text>
+    </view>
+    <view class="card">
+      <empty-state
+        wx:if="{{!error && !recentGifts.length}}"
+        title="还没有往来记录"
+        detail="记住那些重要的人和时刻。"
+        action="添加联系人"
+        bind:action="social"
+      />
+      <view
+        wx:for="{{recentGifts}}"
+        wx:key="id"
+        class="row list-item"
+        bindtap="social"
+      >
+        <text class="gift-text">{{item.text}}</text>
+        <text class="muted">{{item.date}}</text>
+      </view>
+    </view>
+  </view>
+</view>

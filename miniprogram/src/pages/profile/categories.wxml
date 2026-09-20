@@ -1,0 +1,61 @@
+<view class="page">
+  <view class="intro"
+    ><text class="eyebrow">我的 · 分类管理</text
+    ><text class="h1">把分类整理成自己的样子。</text
+    ><text class="muted">改名会同步已有数据；使用中的分类不能删除。</text></view
+  >
+  <view class="field"
+    ><text class="field-label">业务模块</text
+    ><picker
+      range="{{moduleLabels}}"
+      value="{{moduleIndex}}"
+      bindchange="moduleChange"
+      ><view class="field-picker"
+        >{{moduleLabels[moduleIndex]}}　⌄</view
+      ></picker
+    ></view
+  >
+  <view class="add card"
+    ><input
+      placeholder="新增分类名称"
+      value="{{newName}}"
+      data-field="newName"
+      bindinput="input"
+      confirm-type="done"
+      bindconfirm="add"
+    /><text class="link" bindtap="add">添加</text></view
+  >
+  <view wx:if="{{error}}" class="error" bindtap="load"
+    >{{error}} · 点击重试</view
+  >
+  <empty-state
+    wx:if="{{!loading && !error && !categories.length}}"
+    title="暂无分类"
+  />
+  <view class="card list"
+    ><view wx:for="{{categories}}" wx:key="id" class="row category-row"
+      ><text>{{item.name}}</text
+      ><view class="row controls"
+        ><text class="link" data-id="{{item.id}}" bindtap="startEdit">改名</text
+        ><text class="delete" data-id="{{item.id}}" bindtap="remove"
+          >删除</text
+        ></view
+      ></view
+    ></view
+  >
+  <view wx:if="{{editingId}}" class="editor"
+    ><view class="editor-card card"
+      ><text class="section-title">修改分类</text
+      ><input
+        class="field-input"
+        value="{{editingName}}"
+        data-field="editingName"
+        bindinput="input"
+        focus
+      /><view class="editor-actions"
+        ><view class="button-secondary" bindtap="cancelEdit">取消</view
+        ><view class="button-primary" bindtap="saveEdit">保存</view></view
+      ></view
+    ></view
+  >
+</view>

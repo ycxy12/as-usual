@@ -1,0 +1,35 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: richangji
+      MYSQL_USER: richangji
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      retries: 20
+  api:
+    build: ./backend
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      DB_URL: "jdbc:mysql://mysql:3306/richangji?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai"
+      DB_USER: richangji
+      DB_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+      WECHAT_APP_ID: ${WECHAT_APP_ID:?Set WECHAT_APP_ID in .env}
+      WECHAT_APP_SECRET: ${WECHAT_APP_SECRET:?Set WECHAT_APP_SECRET in .env}
+      IMAGE_DIR: /data/images
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - image_data:/data/images
+volumes:
+  mysql_data:
+  image_data:

@@ -1,0 +1,54 @@
+<view class="page">
+  <view wx:if="{{contact}}">
+    <view class="intro">
+      <text class="eyebrow">{{contact.relation || '联系人'}}</text>
+      <text class="h1">{{contact.name}}</text>
+      <text wx:if="{{contact.note}}" class="muted">{{contact.note}}</text>
+    </view>
+    <view class="stat-grid">
+      <stat-card label="累计送出" value="{{sent}}" />
+      <stat-card label="累计收到" value="{{received}}" />
+      <stat-card label="差额（收 - 送）" value="{{difference}}" />
+    </view>
+    <view class="actions">
+      <text class="link" bindtap="edit">编辑联系人</text>
+      <text class="button-danger" bindtap="removeContact">删除联系人</text>
+    </view>
+    <view class="section">
+      <text class="section-title">完整往来记录</text>
+      <empty-state
+        wx:if="{{!error && !gifts.length && !loading}}"
+        title="还没有往来"
+        detail="一份礼物，一次心意，都可以留在这里。"
+        action="记录一次往来"
+        bind:action="add"
+      />
+      <view wx:for="{{gifts}}" wx:key="id" class="card gift">
+        <view class="row" data-id="{{item.id}}" bindtap="editGift">
+          <text class="name">{{item.event}}</text>
+          <text class="amount">{{item.direction}} {{item.amountText}}</text>
+        </view>
+        <view class="row meta">
+          <text>{{item.dateText}} · {{item.kind}} {{item.giftName}}</text>
+          <text
+            class="button-danger"
+            data-id="{{item.id}}"
+            catchtap="removeGift"
+          >
+            删除
+          </text>
+        </view>
+        <text wx:if="{{item.note}}" class="muted note">{{item.note}}</text>
+      </view>
+      <view
+        wx:if="{{gifts.length !== total}}"
+        class="button-secondary"
+        bindtap="more"
+      >
+        加载更多
+      </view>
+    </view>
+    <view class="fab" bindtap="add">+</view>
+  </view>
+  <empty-state wx:else title="{{error || '联系人不存在'}}" />
+</view>

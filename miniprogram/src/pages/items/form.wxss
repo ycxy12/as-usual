@@ -1,0 +1,23 @@
+.photo {
+  width: 240rpx;
+  height: 240rpx;
+  border-radius: 20rpx;
+}
+.image-picker {
+  width: 240rpx;
+  height: 240rpx;
+  border: 2rpx dashed var(--rj-line);
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rj-accent);
+}
+.date-row {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+.date-row picker {
+  flex: 1;
+}

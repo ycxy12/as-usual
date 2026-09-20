@@ -1,0 +1,52 @@
+<view class="page">
+  <view class="intro"
+    ><text class="eyebrow">日常集 · 发现</text
+    ><text class="h1">给今天一点小期待。</text
+    ><text class="muted">从自己喜欢的地方里，轻松做个选择。</text></view
+  >
+  <view wx:if="{{error}}" class="error" bindtap="load"
+    >{{error}} · 点击重试</view
+  >
+  <view class="feature card"
+    ><text class="eyebrow">今天吃什么</text
+    ><text class="feature-title">别纠结，帮我选一家</text
+    ><text class="muted"
+      >{{restaurantTotal}} 家收藏 · {{restaurantVisited}} 家吃过</text
+    ><view class="button-primary" data-type="restaurant" bindtap="pick"
+      >帮我选</view
+    ><text class="link" data-type="restaurant" bindtap="list"
+      >管理餐厅库　›</text
+    ></view
+  >
+  <view class="feature card"
+    ><text class="eyebrow">周末去哪玩</text
+    ><text class="feature-title">这个周末，换个地方走走</text
+    ><text class="muted">{{placeTotal}} 个地点 · {{placeWish}} 个想去</text
+    ><view class="button-primary" data-type="place" bindtap="pick"
+      >这个周末去哪？</view
+    ><text class="link" data-type="place" bindtap="list"
+      >管理地点库　›</text
+    ></view
+  >
+  <view class="section"
+    ><text class="section-title">最近去过</text
+    ><view class="card recent"
+      ><empty-state
+        wx:if="{{!error && !recent.length}}"
+        title="还没有到访记录"
+        detail="先添加喜欢的餐厅或地点吧。"
+      /><view
+        wx:for="{{recent}}"
+        wx:key="id"
+        class="row recent-row"
+        data-id="{{item.id}}"
+        data-type="{{item.type}}"
+        bindtap="open"
+        ><view class="recent-main"
+          ><text>{{item.name}}</text
+          ><text class="muted">{{item.detail}}</text></view
+        ><text class="link">›</text></view
+      ></view
+    ></view
+  >
+</view>

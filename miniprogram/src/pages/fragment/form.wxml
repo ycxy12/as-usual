@@ -1,0 +1,62 @@
+<view class="page">
+  <view class="intro">
+    <text class="eyebrow">不必写得完整</text>
+    <text class="h1">此刻，想记下什么？</text>
+  </view>
+  <view class="field">
+    <text class="field-label">内容 *</text>
+    <textarea
+      class="field-textarea"
+      maxlength="2000"
+      placeholder="一件小事、一个念头，或一句话……"
+      value="{{content}}"
+      data-field="content"
+      bindinput="onInput"
+    />
+  </view>
+  <view class="date-row">
+    <view class="field">
+      <text class="field-label">日期</text>
+      <picker mode="date" value="{{date}}" bindchange="onDate">
+        <view class="field-picker">{{date}}　⌄</view>
+      </picker>
+    </view>
+    <view class="field">
+      <text class="field-label">时间</text>
+      <picker mode="time" value="{{time}}" bindchange="onTime">
+        <view class="field-picker">{{time}}　⌄</view>
+      </picker>
+    </view>
+  </view>
+  <view class="field">
+    <text class="field-label">标签</text>
+    <input
+      class="field-input"
+      placeholder="多个标签用空格分隔"
+      value="{{tagsText}}"
+      data-field="tagsText"
+      bindinput="onInput"
+    />
+  </view>
+  <view class="field">
+    <text class="field-label">图片（最多 9 张）</text>
+    <view class="image-row">
+      <view wx:for="{{images}}" wx:key="id" class="image-wrap">
+        <image src="{{item.path}}" mode="aspectFill" />
+        <text class="remove" data-index="{{index}}" bindtap="removeImage">
+          ×
+        </text>
+      </view>
+      <view
+        wx:if="{{images.length !== 9}}"
+        class="add-image"
+        bindtap="chooseImages"
+      >
+        ＋
+      </view>
+    </view>
+  </view>
+  <view class="button-primary form-footer" bindtap="save">
+    {{saving?'保存中…':'保存碎片'}}
+  </view>
+</view>

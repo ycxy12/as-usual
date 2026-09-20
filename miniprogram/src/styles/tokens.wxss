@@ -1,0 +1,10 @@
+page {
+  --rj-bg: #f8f7f3;
+  --rj-surface: #fffefa;
+  --rj-ink: #282b28;
+  --rj-muted: #7e827c;
+  --rj-line: #e9e9e3;
+  --rj-accent: #597763;
+  --rj-accent-light: #eaf0e9;
+  --rj-danger: #ac5a50;
+}

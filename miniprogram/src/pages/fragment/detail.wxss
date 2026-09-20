@@ -1,0 +1,22 @@
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 44rpx;
+  margin-top: 56rpx;
+}
+.content {
+  font-size: 36rpx;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+.images image {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 20rpx;
+}

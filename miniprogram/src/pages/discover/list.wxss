@@ -1,0 +1,79 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+  padding: 40rpx 0 24rpx;
+}
+.actions {
+  display: flex;
+  gap: 16rpx;
+}
+.actions view {
+  flex: 1;
+}
+.search {
+  display: flex;
+  align-items: center;
+  margin: 24rpx 0 16rpx;
+}
+.search input {
+  flex: 1;
+}
+.filters {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 24rpx;
+}
+.filter-pill {
+  background: var(--rj-accent-light);
+  color: var(--rj-accent);
+  padding: 14rpx 24rpx;
+  border-radius: 40rpx;
+}
+.entry {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  margin: 14rpx 0;
+}
+.thumb {
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 18rpx;
+  flex-shrink: 0;
+}
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--rj-accent-light);
+  color: var(--rj-accent);
+  font-size: 36rpx;
+}
+.body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+.name {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.body .muted,
+.meta {
+  font-size: 24rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.meta {
+  color: var(--rj-accent);
+}
+.bottom {
+  text-align: center;
+  padding: 30rpx;
+}

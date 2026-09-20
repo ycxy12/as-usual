@@ -1,0 +1,8 @@
+<view class="empty">
+  <text class="symbol">✦</text>
+  <text class="title">{{title}}</text>
+  <text wx:if="{{detail}}" class="detail">{{detail}}</text>
+  <view wx:if="{{action}}" class="button-secondary action" bindtap="onAction">
+    {{action}}
+  </view>
+</view>

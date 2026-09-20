@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "居住成本",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "empty-state": "/components/empty-state/index",
+    "stat-card": "/components/stat-card/index",
+    "expense-insights": "/components/expense-insights/index"
+  }
+}

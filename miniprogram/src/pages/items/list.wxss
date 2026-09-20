@@ -1,0 +1,91 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+  padding: 40rpx 0 26rpx;
+}
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24rpx 0 16rpx;
+}
+.filter input {
+  flex: 1;
+}
+.filters {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 24rpx;
+}
+.filter-pill {
+  background: var(--rj-accent-light);
+  color: var(--rj-accent);
+  padding: 14rpx 24rpx;
+  border-radius: 40rpx;
+}
+.entry {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  margin: 14rpx 0;
+}
+.thumb {
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 16rpx;
+  flex-shrink: 0;
+}
+.placeholder {
+  background: var(--rj-accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rj-accent);
+  font-size: 36rpx;
+}
+.entry-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+.entry-name {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.entry-body .muted {
+  font-size: 23rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bottom {
+  text-align: center;
+  padding: 30rpx;
+}
+
+.summary {
+  margin: 20rpx 0;
+}
+.category-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 20rpx;
+}
+.category-count {
+  width: calc(50% - 6rpx);
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+}
+.summary-total,
+.rank-row {
+  padding-top: 20rpx;
+  margin-top: 16rpx;
+  border-top: 1rpx solid var(--rj-line);
+}

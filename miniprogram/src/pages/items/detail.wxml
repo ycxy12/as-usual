@@ -1,0 +1,35 @@
+<view class="page">
+  <view wx:if="{{error}}" class="error" bindtap="load"
+    >{{error}} · 点击重试</view
+  >
+  <image wx:if="{{image}}" class="cover" src="{{image}}" mode="aspectFill" />
+  <view class="intro"
+    ><text class="eyebrow">{{title}} · {{category}}</text
+    ><text class="h1">{{name}}</text
+    ><text class="status">{{status}}</text></view
+  >
+  <view class="stats"
+    ><view wx:for="{{stats}}" wx:key="label" class="card stat"
+      ><text class="muted">{{item.label}}</text
+      ><text class="stat-value">{{item.value}}</text></view
+    ></view
+  >
+  <view class="section card"
+    ><text class="section-title">详细信息</text
+    ><view wx:for="{{fields}}" wx:key="label" class="row field-row"
+      ><text class="muted">{{item.label}}</text
+      ><text class="field-value">{{item.value}}</text></view
+    ><view wx:if="{{tags.length}}" class="tag-row"
+      ><text wx:for="{{tags}}" wx:for-item="tag" wx:key="*this" class="tag"
+        >#{{tag}}</text
+      ></view
+    ></view
+  >
+  <view wx:if="{{canWear}}" class="button-primary action" bindtap="wear"
+    >{{busy?'记录中…':'今天穿了'}}</view
+  >
+  <view class="actions"
+    ><view class="button-secondary" bindtap="edit">编辑</view
+    ><view class="delete" bindtap="remove">删除</view></view
+  >
+</view>

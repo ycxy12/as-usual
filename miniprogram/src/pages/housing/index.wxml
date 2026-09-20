@@ -1,0 +1,54 @@
+<view class="page">
+  <view class="intro">
+    <text class="eyebrow">认真过日子的开销</text>
+    <text class="h1">居住成本</text>
+  </view>
+  <view wx:if="{{error}}" class="error" bindtap="refresh">
+    {{error}} · 点击重试
+  </view>
+  <view class="stat-grid">
+    <stat-card label="本月成本" value="{{month}}" />
+    <stat-card label="本年成本" value="{{year}}" />
+    <stat-card label="月均成本" value="{{average}}" />
+    <stat-card label="日均成本" value="{{daily}}" />
+  </view>
+  <expense-insights
+    wx:if="{{stats}}"
+    categories="{{stats.expenses.categories}}"
+    months="{{stats.expenses.months}}"
+    total="{{stats.expenses.total}}"
+  />
+  <view class="section">
+    <text class="section-title">费用记录</text>
+    <empty-state
+      wx:if="{{!error && !items.length && !loading}}"
+      title="还没有居住费用"
+      detail="从房租、水电或一件新家具开始记录。"
+      action="新增费用"
+      bind:action="add"
+    />
+    <view wx:for="{{items}}" wx:key="id" class="row list-item">
+      <view class="entry" data-id="{{item.id}}" bindtap="edit">
+        <text>
+          {{item.category}}　
+          <text class="muted">{{item.dateText}}</text>
+        </text>
+        <text class="muted small">
+          账期 {{item.billingMonth}} {{item.note}}
+        </text>
+      </view>
+      <text class="amount">{{item.amountText}}</text>
+      <text class="button-danger" data-id="{{item.id}}" catchtap="remove">
+        删除
+      </text>
+    </view>
+    <view
+      wx:if="{{items.length !== total}}"
+      class="button-secondary"
+      bindtap="more"
+    >
+      加载更多
+    </view>
+  </view>
+  <view class="fab" bindtap="add">+</view>
+</view>

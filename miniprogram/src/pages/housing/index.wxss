@@ -1,0 +1,17 @@
+.entry {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+.small {
+  font-size: 24rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.list-item .amount,
+.list-item .button-danger {
+  font-size: 24rpx;
+}

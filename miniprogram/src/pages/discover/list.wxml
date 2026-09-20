@@ -1,0 +1,66 @@
+<view class="page">
+  <view class="intro"
+    ><text class="eyebrow">发现 · {{title}}</text
+    ><text class="h1">{{title}}</text
+    ><text class="muted">{{summary}}</text></view
+  >
+  <view class="actions"
+    ><view class="button-primary" bindtap="add"
+      >＋ 添加{{type==='place'?'地点':'餐厅'}}</view
+    ><view class="button-secondary" bindtap="pick">帮我选</view></view
+  >
+  <view class="search card"
+    ><input
+      placeholder="搜索名称、地址或标签"
+      value="{{q}}"
+      bindinput="input"
+      confirm-type="search"
+      bindconfirm="search"
+    /><text class="link" bindtap="search">搜索</text></view
+  >
+  <view class="filters"
+    ><picker
+      range="{{categories}}"
+      value="{{categoryIndex}}"
+      bindchange="categoryChange"
+      ><view class="filter-pill">{{categories[categoryIndex]}}　⌄</view></picker
+    ><picker
+      range="{{visitLabels}}"
+      value="{{visitIndex}}"
+      bindchange="visitChange"
+      ><view class="filter-pill">{{visitLabels[visitIndex]}}　⌄</view></picker
+    ></view
+  >
+  <view wx:if="{{error}}" class="error" bindtap="search"
+    >{{error}} · 点击重试</view
+  >
+  <empty-state
+    wx:if="{{!loading && !error && !rows.length}}"
+    title="还没有收藏"
+    detail="把想去的地方慢慢收进来。"
+    action="添加一条"
+    bind:action="add"
+  />
+  <view
+    wx:for="{{rows}}"
+    wx:key="id"
+    class="entry card"
+    data-id="{{item.id}}"
+    bindtap="open"
+    ><image
+      wx:if="{{item.image}}"
+      class="thumb"
+      src="{{item.image}}"
+      mode="aspectFill"
+    /><view wx:else class="thumb placeholder">{{item.initial}}</view
+    ><view class="body"
+      ><text class="name">{{item.name}}</text
+      ><text class="muted">{{item.category}} · {{item.visits}}</text
+      ><text wx:if="{{item.meta}}" class="meta">{{item.meta}}</text></view
+    ><text class="link">›</text></view
+  >
+  <view wx:if="{{loading}}" class="bottom muted">加载中…</view
+  ><view wx:elif="{{rows.length && rows.length>=total}}" class="bottom muted"
+    >已经到底了</view
+  >
+</view>
